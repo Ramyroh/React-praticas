@@ -1,5 +1,26 @@
 .containerLista {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(26, 26, 26);
     height: 10vh;
-    width: 29vw;
+    width: 28vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.containerLista > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+.containerLista > div > p {
+    margin: 0;
+}
+
+.icon {
+    cursor: pointer;
+    color: rgb(255, 0, 0);
 }

@@ -9,3 +9,31 @@
 .btnSub {
     width: 30vw;
 }
+
+.input {
+    width: 29.5vw;
+    margin-bottom: 1rem;
+    height: 3vh;
+}
+
+.containerListSeach {
+    height: 50vh;
+    width: 31vw;
+    
+}
+
+.seach {
+    width: 20vw;
+    height: 3vh;
+    padding: 0 .5rem;
+    text-align: center;
+    border: none;
+    background-color: rgb(70, 70, 70);
+}
+
+.containerSearch {
+   display: flex;
+   align-items: center;
+   margin-top: 2.5rem;
+}
+
