@@ -7,6 +7,7 @@ function App() {
 
   const [typed, setTyped] = useState('')
   const [registro, setRegistro] = useState([])
+  const [busca, setBusca] = useState('')
 
   function handleClick() {
 
@@ -31,6 +32,7 @@ function App() {
     let listaFiltrada = registro.filter(item => item.id != id)
     setRegistro(listaFiltrada)
   }
+  // const filtroProduto = registro.filter(registro => registro.includes(busca))
   return (
     <div className='containerPrimary'>
       <input className='input' type="text" onChange={e => {
@@ -40,8 +42,16 @@ function App() {
       <button className='btnSub' onClick={handleClick}>
         Adicionar
       </button>
+
       <div className='containerSearch'>
-        <input type="text" className='seach' placeholder='pesquisar por nome' />
+        <input type="text"
+        className='seach'
+        placeholder='pesquisar por nome'
+        value={busca}
+        onChange={ev => {setBusca(ev.target.value)
+        }} 
+        />
+        
         {/* <CiSearch /> */}
       </div>
 
