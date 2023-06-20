@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import Lista from './Lista'
 
@@ -8,7 +8,10 @@ function App() {
   const [registro, setRegistro] = useState([])
   const [busca, setBusca] = useState('')
   const [pesquisado, setPesquisado] = useState([])
+  const [modal, setModal] = useState(false)
+  const [edit, setEdit] = useState('')
 
+ 
   function handleClick() {
 
     if (typed != 0) {
@@ -36,7 +39,21 @@ function App() {
   function pesquisa(nome) {
     const filtro = registro.filter(r => r.nome.toLowerCase().includes(nome.toLowerCase()))
     setPesquisado(filtro)
-  } 
+  }
+
+  function openModal() {
+    setModal(true)
+  }
+
+  function closeModal(){
+    setModal(!modal)
+  }
+
+  function save(id){
+    if(newList.id == id){
+
+    }
+  }
 
   return (
     <div className='containerPrimary'>
@@ -48,24 +65,43 @@ function App() {
         Adicionar
       </button>
 
-     { registro==''? null:<div className='containerSearch'>
+      {registro == '' ? null : <div className='containerSearch'>
         <input type="text"
-        className='seach'
-        placeholder='pesquisar por nome'
-        value={busca}
-        onChange={ev => {setBusca(ev.target.value)
-        pesquisa(ev.target.value)
-        }} 
+          className='seach'
+          placeholder='pesquisar por nome'
+          value={busca}
+          onChange={ev => {
+            setBusca(ev.target.value)
+            pesquisa(ev.target.value)
+          }}
         />
       </div>}
 
       <div className='containerListSeach'>
         {
-         busca==''? registro.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} />)
-         :
-         pesquisado.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} /> )
+          busca == '' ? registro.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} abrir={openModal} />)
+            :
+            pesquisado.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} abrir={openModal} />)
         }
       </div>
+
+    { modal? <div className='containerModal'>
+        <label htmlFor="name">Altere o nome</label>
+        <input 
+          type="text"
+          id='name'  
+          value={edit}
+          onChange={e => setEdit(e.target.value)}
+          />
+        <div>
+          <div>
+            <button className='btnCancel' onClick={closeModal}>Cancelar</button>
+          </div>
+          <div>
+            <button className='btnSave'>Salvar</button>
+          </div>
+        </div>
+      </div>: null}
     </div>
   )
 }

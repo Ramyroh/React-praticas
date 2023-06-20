@@ -1,17 +1,17 @@
 import './style.css'
 import {FiTrash} from 'react-icons/fi'
-import {GrUpdate} from 'react-icons/gr'
+import {RxUpdate} from 'react-icons/rx'
 
-export default function Lista({ name, time, id, deletar}) {
+export default function Lista({ name, time, id, deletar, abrir}) {
     return (
         <div className='containerLista'>
-            <div>
+            <div className='containerDados'>
                 <p>{name}</p>
                 <p>{time}</p>
             </div>
-            <div>
-            <GrUpdate />
-            <FiTrash className='icon' onClick={() =>  deletar(id)}/>
+            <div className='containerIcons'>
+            <RxUpdate className='iconUpdate' onClick={() => abrir(true)}/>
+            <FiTrash className='iconRemove' onClick={() =>  deletar(id)}/>
             </div>
         </div>
     )

@@ -16,10 +16,12 @@
     height: 3vh;
 }
 
+.none {
+    display: none;
+}
+
 .containerListSeach {
-    height: 50vh;
     width: 31vw;
-    
 }
 
 .seach {
@@ -36,3 +38,42 @@
    margin-top: 2.5rem;
 }
 
+.containerModal {
+    position: absolute;
+    top: 17rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+    background-color: rgb(26, 26, 26);
+    border-radius: 10px;
+    height: 15vh;
+    width: 30vw;
+    padding: 2rem;
+    box-shadow: 5px 5px 5px black
+}
+
+.containerModal > div {
+    display: flex;
+    justify-content: flex-end; 
+    column-gap: 1rem;
+    margin-top: 3rem;
+}
+
+.btnCancel {
+    border: none;
+    padding: .5rem;
+    border-radius: 5px;
+    width: 4vw;
+}
+.btnCancel:hover {
+    background-color: rgb(168, 0, 0);
+    transition: 0.3s;
+}
+
+.btnSave {
+    background-color: rgb(18, 218, 0);
+    border: none;
+    padding: .5rem;
+    border-radius: 5px;
+    width: 4vw;
+}

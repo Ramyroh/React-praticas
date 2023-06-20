@@ -10,7 +10,7 @@
     border-radius: 10px;
 }
 
-.containerLista > div {
+.containerDados {
     display: flex;
     flex-direction: column;
     row-gap: .5rem;
@@ -20,7 +20,17 @@
     margin: 0;
 }
 
-.icon {
+.iconRemove {
     cursor: pointer;
     color: rgb(255, 0, 0);
+}
+
+.iconUpdate {
+    cursor: pointer;
+    color: rgb(0, 217, 255);
+}
+
+.containerIcons {
+    display: flex;
+    column-gap: 1rem;
 }
