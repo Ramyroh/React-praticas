@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import './App.css'
 import Lista from './Lista'
-import { CiSearch } from 'react-icons/ci'
 
 function App() {
 
   const [typed, setTyped] = useState('')
   const [registro, setRegistro] = useState([])
   const [busca, setBusca] = useState('')
+  const [pesquisado, setPesquisado] = useState([])
 
   function handleClick() {
 
@@ -32,7 +32,12 @@ function App() {
     let listaFiltrada = registro.filter(item => item.id != id)
     setRegistro(listaFiltrada)
   }
-  // const filtroProduto = registro.filter(registro => registro.includes(busca))
+
+  function pesquisa(nome) {
+    const filtro = registro.filter(r => r.nome.toLowerCase().includes(nome.toLowerCase()))
+    setPesquisado(filtro)
+  } 
+
   return (
     <div className='containerPrimary'>
       <input className='input' type="text" onChange={e => {
@@ -43,21 +48,22 @@ function App() {
         Adicionar
       </button>
 
-      <div className='containerSearch'>
+     { registro==''? null:<div className='containerSearch'>
         <input type="text"
         className='seach'
         placeholder='pesquisar por nome'
         value={busca}
         onChange={ev => {setBusca(ev.target.value)
+        pesquisa(ev.target.value)
         }} 
         />
-        
-        {/* <CiSearch /> */}
-      </div>
+      </div>}
 
       <div className='containerListSeach'>
         {
-          registro.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} />)
+         busca==''? registro.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} />)
+         :
+         pesquisado.map(item => <Lista key={item.id} name={item.nome} time={item.time} deletar={Delete} id={item.id} /> )
         }
       </div>
     </div>
